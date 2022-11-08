@@ -1,0 +1,29 @@
+{
+  "name": "vava-pixels",
+  "version": "0.1.0",
+  "description": "wip",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test:watch": "test --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeonardoCampello-dev/vava-pixels.git"
+  },
+  "keywords": [
+    "valorant"
+  ],
+  "author": "Leonardo Campello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeonardoCampello-dev/vava-pixels/issues"
+  },
+  "homepage": "https://github.com/LeonardoCampello-dev/vava-pixels#readme",
+  "devDependencies": {
+    "@types/jest": "^29.2.2",
+    "jest": "^29.3.0",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.8.4"
+  }
+}

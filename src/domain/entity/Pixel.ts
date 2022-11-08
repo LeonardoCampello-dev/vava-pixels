@@ -6,7 +6,8 @@ export class Pixel {
     private map: string,
     private agent: string,
     private ability: string,
-    private images: string[]
+    private images: string[],
+    private id?: string
   ) {}
 
   public getVideo(): string | undefined {
@@ -31,5 +32,9 @@ export class Pixel {
 
   public getImages(): string[] {
     return this.images
+  }
+
+  public getId(): string | undefined {
+    return this.id
   }
 }

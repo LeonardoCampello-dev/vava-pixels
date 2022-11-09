@@ -5,7 +5,7 @@ import { PixelNotFoundException } from '../../src/exception/PixelNotFoundExcepti
 export class PixelRepositoryMock extends PixelRepository {
   private pixels: Pixel[] = []
 
-  getOneById(id: string): Pixel {
+  public async getOneById(id: string): Promise<Pixel> {
     const pixel = this.pixels.find(pixel => pixel.getId() === id)
 
     if (!pixel) throw new PixelNotFoundException()
@@ -13,7 +13,7 @@ export class PixelRepositoryMock extends PixelRepository {
     return pixel
   }
 
-  getList(): Pixel[] {
+  public async getList(): Promise<Pixel[]> {
     return this.pixels
   }
 
@@ -23,7 +23,7 @@ export class PixelRepositoryMock extends PixelRepository {
     return pixel
   }
 
-  update(pixelToUpdate: Pixel): Pixel {
+  public async update(pixelToUpdate: Pixel): Promise<Pixel> {
     const index = this.pixels.findIndex(pixel => pixel.getId() === pixelToUpdate.getId())
 
     if (!index) throw new PixelNotFoundException()
@@ -33,13 +33,13 @@ export class PixelRepositoryMock extends PixelRepository {
     return pixelToUpdate
   }
 
-  save(pixel: Pixel): Pixel {
+  public async save(pixel: Pixel): Promise<Pixel> {
     if (pixel.getId()) return this.update(pixel)
 
     return this.create(pixel)
   }
 
-  deleteOneById(id: string): void {
+  public async deleteOneById(id: string): Promise<void> {
     this.pixels = this.pixels.filter(pixel => pixel.getId() !== id)
   }
 }

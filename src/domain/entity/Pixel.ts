@@ -37,4 +37,16 @@ export class Pixel {
   public getId(): string | undefined {
     return this.id
   }
+
+  public setVideo(video: string): this {
+    this.video = video
+
+    return this
+  }
+
+  public setDescription(description: string): this {
+    this.description
+
+    return this
+  }
 }

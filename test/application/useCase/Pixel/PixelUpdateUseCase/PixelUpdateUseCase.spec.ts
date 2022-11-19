@@ -10,14 +10,14 @@ describe('pixel update use case', () => {
   it('should update properties received in dto', async () => {
     const repository = new PixelRepositoryMock()
 
-    const createdPixel = await repository.create(
-      new Pixel('map', 'agent', 'ability', ['image'], 'id')
-    )
+    const pixelId = 'id'
+
+    await repository.create(new Pixel('map', 'agent', 'ability', ['image'], pixelId))
 
     const abilityToUpdate = 'updated-ability'
     const imagesToUpdate = ['updated-images']
 
-    const dto = new PixelUpdateDTO(createdPixel.getId()!).setAbility(abilityToUpdate)
+    const dto = new PixelUpdateDTO(pixelId).setAbility(abilityToUpdate)
 
     imagesToUpdate.map(image => dto.addImage(image))
 

@@ -7,13 +7,13 @@ describe('pixel delete use case', () => {
   it('should return true if pixel is deleted', async () => {
     const repository = new PixelRepositoryMock()
 
-    const existingPixel = await repository.create(
-      new Pixel('map', 'agent', 'ability', ['image'], 'id')
-    )
+    const pixelId = 'id'
+
+    await repository.create(new Pixel('map', 'agent', 'ability', ['image'], pixelId))
 
     const useCase = new PixelDeleteUseCase(repository)
 
-    const result = await useCase.execute(existingPixel.getId()!)
+    const result = await useCase.execute(pixelId)
 
     expect(result).toBeTruthy()
   })

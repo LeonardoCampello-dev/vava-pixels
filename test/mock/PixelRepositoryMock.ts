@@ -39,7 +39,13 @@ export class PixelRepositoryMock extends PixelRepository {
     return this.create(pixel)
   }
 
-  public async deleteOneById(id: string): Promise<void> {
+  public async delete(id: string): Promise<boolean> {
+    const pixelExists = this.pixels.some(pixel => pixel.getId() === id)
+
+    if (!pixelExists) throw new PixelNotFoundException()
+
     this.pixels = this.pixels.filter(pixel => pixel.getId() !== id)
+
+    return true
   }
 }

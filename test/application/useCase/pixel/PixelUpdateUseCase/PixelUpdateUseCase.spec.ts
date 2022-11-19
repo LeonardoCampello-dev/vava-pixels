@@ -3,6 +3,7 @@ import {
   PixelUpdateUseCase
 } from '../../../../../src/application/useCase/Pixel/PixelUpdateUseCase'
 import { Pixel } from '../../../../../src/domain/entity'
+import { PixelNotFoundException } from '../../../../../src/exception'
 import { PixelRepositoryMock } from '../../../../mock/PixelRepositoryMock'
 
 describe('pixel update use case', () => {
@@ -26,5 +27,15 @@ describe('pixel update use case', () => {
 
     expect(updatedPixel.getAbility()).toBe(abilityToUpdate)
     expect(updatedPixel.getImages()).toContain(imagesToUpdate[0])
+  })
+
+  it('should throw an exception if the pixel doesnt exist', async () => {
+    try {
+      const useCase = new PixelUpdateUseCase(new PixelRepositoryMock())
+
+      await useCase.execute(new PixelUpdateDTO('invalid-id'))
+    } catch (error) {
+      expect(error).toBeInstanceOf(PixelNotFoundException)
+    }
   })
 })

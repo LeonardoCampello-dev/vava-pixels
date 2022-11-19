@@ -7,5 +7,5 @@ export abstract class PixelRepository {
 
   abstract save(pixel: Pixel): Promise<Pixel>
 
-  abstract deleteOneById(id: string): void
+  abstract delete(id: string): Promise<boolean>
 }

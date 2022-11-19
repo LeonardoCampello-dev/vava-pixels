@@ -11,17 +11,6 @@ export class PixelCreateDTO {
     private description?: string
   ) {}
 
-  public static buildFromHttpRequest(payload: IPixelCreateRequestPayload) {
-    return new PixelCreateDTO(
-      payload.map,
-      payload.agent,
-      payload.ability,
-      payload.images,
-      payload.video,
-      payload.description
-    )
-  }
-
   public toDomain(): Pixel {
     const domain = new Pixel(this.map, this.agent, this.ability, this.images)
 

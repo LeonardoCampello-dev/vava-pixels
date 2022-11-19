@@ -1,6 +1,6 @@
-import { Pixel } from '../../src/domain/entity/Pixel'
-import { PixelRepository } from '../../src/domain/repository/PixelRepository'
-import { PixelNotFoundException } from '../../src/exception/PixelNotFoundException'
+import { Pixel } from '../../src/domain/entity'
+import { PixelRepository } from '../../src/domain/repository'
+import { PixelNotFoundException } from '../../src/exception'
 
 export class PixelRepositoryMock extends PixelRepository {
   private pixels: Pixel[] = []
@@ -17,7 +17,7 @@ export class PixelRepositoryMock extends PixelRepository {
     return this.pixels
   }
 
-  create(pixel: Pixel): Pixel {
+  public async create(pixel: Pixel): Promise<Pixel> {
     this.pixels.push(pixel)
 
     return pixel
@@ -26,7 +26,7 @@ export class PixelRepositoryMock extends PixelRepository {
   public async update(pixelToUpdate: Pixel): Promise<Pixel> {
     const index = this.pixels.findIndex(pixel => pixel.getId() === pixelToUpdate.getId())
 
-    if (!index) throw new PixelNotFoundException()
+    if (index === -1) throw new PixelNotFoundException()
 
     this.pixels[index] = pixelToUpdate
 

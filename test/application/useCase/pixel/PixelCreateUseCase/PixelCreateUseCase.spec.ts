@@ -1,5 +1,7 @@
-import { PixelCreateDTO } from '../../../../../src/application/useCase/Pixel/PixelCreateUseCase/PixelCreateDTO'
-import { PixelCreateUseCase } from '../../../../../src/application/useCase/Pixel/PixelCreateUseCase/PixelCreateUseCase'
+import {
+  PixelCreateDTO,
+  PixelCreateUseCase
+} from '../../../../../src/application/useCase/Pixel/PixelCreateUseCase'
 import { PixelRepositoryMock } from '../../../../mock/PixelRepositoryMock'
 
 describe('pixel create use case', () => {

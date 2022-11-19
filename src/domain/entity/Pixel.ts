@@ -38,6 +38,12 @@ export class Pixel {
     return this.id
   }
 
+  public addImage(image: string): this {
+    this.images.push(image)
+
+    return this
+  }
+
   public setVideo(video: string): this {
     this.video = video
 
@@ -45,7 +51,31 @@ export class Pixel {
   }
 
   public setDescription(description: string): this {
-    this.description
+    this.description = description
+
+    return this
+  }
+
+  public setMap(map: string): this {
+    this.map = map
+
+    return this
+  }
+
+  public setAgent(agent: string): this {
+    this.agent = agent
+
+    return this
+  }
+
+  public setAbility(ability: string): this {
+    this.ability = ability
+
+    return this
+  }
+
+  public setImages(images: string[]): this {
+    this.images = images
 
     return this
   }
